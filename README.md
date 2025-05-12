@@ -4,3 +4,5 @@ Various uncontrollable and unpredictable factors ( e.g., atmospheric disturbance
 ## Proposed System
 The proposed system consists of a triaxial Accelerometer, Gyroscope and Magnetometer along with position and velocity measured by the GPS module. Raspberry Pi 3 is used to receive the sensor readings and perform real time analysis. An adaptive filter called Kalman Filter is used to predict and correct the state vector. Initially, the diagonal elements in the covariance matrix used in the Kalman Filter are populated with the standard deviation values of the state variables. As the number of iterations increases, the filter becomes more confident about its’ prediction and the standard deviation is reduced.
 
+![image1](https://github.com/user-attachments/assets/7edf2f33-d6fa-47c1-8b11-d2e6f007b531)
+
