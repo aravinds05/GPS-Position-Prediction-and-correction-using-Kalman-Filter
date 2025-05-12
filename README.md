@@ -17,9 +17,75 @@ Below is the flow diagram of the the equations involved in the Kalman Filter pro
 
 # Non-Linear Kalman Filter 
 The proposed non-linear Kalman Filter system consists of two main stages. In the first stage, the orientation of the object is estimated and in the second stage, the Kalman Filter uses the estimated angles from the first step to estimate the position.
+
 ![image44](https://github.com/user-attachments/assets/564c38a1-0574-44e1-9efa-bbe108b81701)
+
 In the first stage, we estimate the Euler angles, roll(θ), pitch(φ) and yaw(Ψ), to estimate the orientation of the object. These angles are used to transform vectors from body frame to the navigation frame. The Gyroscope gives the angular speed which can be integrated to obtain Euler angles (g_r, g_p, g_y) roll(Θg), pitch(Φg) and yaw(Ψg). The Magnetometer and Accelerometer’s readings are fused together by sensor fusion [6] to obtain Euler angles (f_r, f_p, f_y) roll(Θf), pitch(Φf) and yaw(Ψf).
 
 **Set 1 : Fusion Euler angles (Θf, Φf, Ψf) :**
+
+![image5](https://github.com/user-attachments/assets/d74c2d41-487b-4d07-a639-9acae11d3c0e)
+
+**Set 2 : Gyroscope Euler angles (Θg, Φg, Ψg) :**
+
+![iamge6](https://github.com/user-attachments/assets/23bbe15c-ae83-453b-9166-7a2d0d9131b6)
+
+These values are fed to a Kalman filter by considering fusion angles as the observed values and gyroscope angles as the measured values. The equations are modified as
+
+![iamge7](https://github.com/user-attachments/assets/5ef7ef93-441a-44e6-92a1-7c646b448e4a)
+
+The estimated Euler angels are used to construct rotation matrices
+
+![image8](https://github.com/user-attachments/assets/1672424a-5de5-4ae2-a7fb-904a145ccfd9)
+
+From theses matrices, we can find Direction Cosine Matrix (DCM) by matrix multiplication.
+
+![iamge9](https://github.com/user-attachments/assets/43038557-d17c-4630-ac75-3442cec34679)
+
+In the second stage, we estimate the position and velocity of the object. The prediction stage is modified as
+
+![image10](https://github.com/user-attachments/assets/f517a4e0-5ccb-4c14-8d99-2531d112ea65)
+
+And the correct and update stage is modified as
+
+![iamge11](https://github.com/user-attachments/assets/681e2216-be5b-4d43-8564-f86f69f1cd87)
+
+## Results
+We first tested the algorithm on pre-recorded test data. After obtaining the prediction, we plotted it on Google Earth to compare results.
+
+![image12](https://github.com/user-attachments/assets/b6625422-67ff-4302-8382-5a9899bc66b5)
+
+The above figure is the position plot using the test data on Google earth. the red dots are the faulty GPS measurements, the white dots are the predictions made by the linear Kalman Filter and the yellow dots are the predictions made by our proposed system.
+
+![image13](https://github.com/user-attachments/assets/acc9e43d-b3c5-41ee-a195-7d3f06018c0f)
+
+![image14](https://github.com/user-attachments/assets/fa5973f0-bece-4dda-bf19-066e598bbc8d)
+
+In the above plots, the Blue line indicates Kalman filter prediction, the Orange line indicates Measured values and the Green line indicates current Corrected values. Following are the Euler angle plots obtained while predicting the position using the above system.
+
+![image15](https://github.com/user-attachments/assets/aa548450-f9e2-44d3-ac9a-346521cb044e)
+![image16](https://github.com/user-attachments/assets/d1000833-2e05-402b-a8bf-d86e4dfbb443)
+![iamge17](https://github.com/user-attachments/assets/8273343f-fff6-40f7-9606-b4d85d220a33)
+
+In the above plots, the Blue line indicates Kalman filter prediction, the Orange line indicates Measured values and the Green line indicates current Corrected values. We can observe that the Kalman Filter predicted line closely follows the Fusion angles which is more gradual and smooth compared to the Gyroscope angles. After testing the algorithm on test data, we tested it in real time. The sensor readings and the GPS readings were read, processed and plotted on Google maps in real time.
+
+![image18](https://github.com/user-attachments/assets/479e81f9-040b-43fd-b6b7-f9b567b84e7c)
+
+In the above plot, the green line is the predicted position by our algorithm and the red line the measured position by the GPS module. After ending the program, the data was saved in a csv file for further analysis. Following is the position plot.
+
+![image19](https://github.com/user-attachments/assets/a08bd9c0-b2cd-4f67-b473-c016f5fdb54f)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
