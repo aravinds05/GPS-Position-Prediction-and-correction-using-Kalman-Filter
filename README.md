@@ -73,7 +73,19 @@ In the above plots, the Blue line indicates Kalman filter prediction, the Orange
 
 In the above plot, the green line is the predicted position by our algorithm and the red line the measured position by the GPS module. After ending the program, the data was saved in a csv file for further analysis. Following is the position plot.
 
-![image18](https://github.com/user-attachments/assets/a08bd9c0-b2cd-4f67-b473-c016f5fdb54f)
+![image19](https://github.com/user-attachments/assets/a08bd9c0-b2cd-4f67-b473-c016f5fdb54f)
+
+The Orange line indicates the GPS measured data and the Blue line indicates the Kalman Filter predicted data. We can observe some spikes in the GPS measured data. This is rectified by considering the previously predicted value as current value if the error is greater than 50 m. Following are the velocity plots obtained during real time prediction.
+
+![image20](https://github.com/user-attachments/assets/f16a38ef-9df6-4b6e-ba1c-fd638b2bbea4)
+![image21](https://github.com/user-attachments/assets/6da0ffb5-8de5-4f89-b1a8-d98495ea6b07)
+![iamge22](https://github.com/user-attachments/assets/65e15506-2127-4172-b378-300024a8b0cd)
+
+# Conclusion
+
+Kalman filters is a very powerful tool and is used in a variety of state estimation systems. They’re able to make accurate predictions and is still computationally cheap. Methods such as lane tracking, and traffic sign localization together with map matching can be used along with sensor fusion to make more accurate prediction. The GPS devices used in systems are of high grade and expensive. It is possible to arrive at a low cost solution using a cheaper GPS module and IMU measurements with the help of the Kalman Filters.
+
+
 
 
 
