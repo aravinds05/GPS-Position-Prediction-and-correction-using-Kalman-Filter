@@ -73,7 +73,7 @@ In the above plots, the Blue line indicates Kalman filter prediction, the Orange
 
 In the above plot, the green line is the predicted position by our algorithm and the red line the measured position by the GPS module. After ending the program, the data was saved in a csv file for further analysis. Following is the position plot.
 
-![image19](https://github.com/user-attachments/assets/a08bd9c0-b2cd-4f67-b473-c016f5fdb54f)
+![image18](https://github.com/user-attachments/assets/a08bd9c0-b2cd-4f67-b473-c016f5fdb54f)
 
 
 
